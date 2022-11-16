@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function demo() {
+        //     console.log(x); //undefined
+        //     var x = 2;
+        // }
+
+        //let有暂时性死区：也就是let声明的变量要先定义后使用
+        function demo() {
+            console.log(x); //x is not defined
+            let x = 2;
+        }
+
+        demo();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

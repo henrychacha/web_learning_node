@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 什么是解构赋值？  
+        //   在es6中将数组、对象中的数据按照一定模式提取出来并赋值给变量，这一过程称为解构赋值。
+
+        //1、数组完全解构赋值：
+        //2、数组不完全解构赋值：
+        //3、数组解构赋值的默认值：
+        //4、数组嵌套解构赋值：
+
+
+        //数组完全解构赋值
+        let arr = [1, 3, 5, 8];
+
+        //es5写法：
+        // let x = arr[0];
+        // let y = arr[1];
+        // let m = arr[2];
+
+        // let [x, y, m, n] = arr;
+        // console.log(x, y, m, n);
+        // let [i, p, t] = [33, 22, 6];
+        // console.log(i, p, t);
+
+        //数组不完全解构赋值
+        // let [x, y] = [1, 2, 3];
+        // console.log(x, y);
+
+        // let [x, , y] = [1, 2, 3];
+        // console.log(x, y);
+
+        // let [x, y, m, n] = [1, 2, 3];
+        // console.log(x, y, m, n);
+
+        //数组解构赋值的默认值：需要注意的是解析失败时默认值才生效
+        // let [x, y = 77, z = 88] = [1, 6];
+        // console.log(x, y, z);
+
+
+        //数组嵌套解构赋值：
+
+        let arr2 = [1, 3, [21, 31], 5];
+        // console.log(arr2);
+        // let [, x, [, y], z] = arr2;
+        let [, y, [, x], z] = arr2;
+        console.log(x, y, z);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

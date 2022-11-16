@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">测试</button>
+    <script>
+        //对象中的方法不能使用箭头函数
+        let obj = {
+            age: 22,
+            usr: "lisi",
+            fn: function() {
+                console.log(`姓名:${this.usr}  年龄:${this.age}`);
+            },
+            fn2: () => {
+                console.log(`姓名:${this.usr}  年龄:${this.age}`);
+            }
+        };
+
+        // obj.fn();
+        // obj.fn2();
+
+
+        //给dom绑定事件函数时不要使用箭头函数
+        var curbtn = document.getElementById('btn');
+        // curbtn.addEventListener('click', function(e) {
+        //     console.log(this);
+        // });
+
+        curbtn.addEventListener('click', (e) => {
+            console.log(this);
+        });
+    </script>
+</body>
+
+</html>

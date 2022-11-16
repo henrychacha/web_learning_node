@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //注意：promise里面的代码会以同步方式来执行
+        // console.log(1);
+        // let prm = new Promise((resove, reject) => {
+        //     //将来要执行的异步操作代码
+        //     console.log(2); //同步执行
+        // });
+
+        // console.log(3);
+
+        //  console.log(prm);
+
+        //resolve:成功时要执行的回调函数
+        //reject:失败时要执行的回调函数
+        let prm = new Promise((resolve, reject) => {
+            setTimeout(function() {
+                //console.log('Hello...');
+                //需求：把"Hello..."字符串传递出来？
+                // resolve('Hello...'); //调用方法
+                //   reject('error msg');
+            }, 2000);
+        });
+
+        prm.then(function(d) {
+            console.log('成功...', d);
+        }, function(err) {
+            console.log('失败...', err);
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

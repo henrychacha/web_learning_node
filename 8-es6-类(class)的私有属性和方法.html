@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let _tel = Symbol('电话');
+        // let _email = Symbol('邮箱');
+
+        // class demo {
+        //     constructor(tels, emails) {
+        //         this[_tel] = tels;
+        //         this[_email] = emails;
+        //     }
+
+        //     getdata() {
+        //         console.log(this[_tel], this[_email]);
+        //     }
+        // }
+
+        // let obj = new demo(110, '110@163.com');
+        // //因为Symbol的值是唯一，因此再创建一个Symbol则无法访问到属性值
+        // curTel = Symbol();
+        // console.log(obj[curTel])
+
+        // //问题：一旦知道了_tel这个变量名则可以正确访问对就的属性值
+        // console.log(obj[_tel]);
+
+
+        var mydemo = (function() {
+            let _tel = Symbol('电话');
+            let _email = Symbol('邮箱');
+
+            class demo {
+                constructor(tels, emails) {
+                    // this.#address = add;
+                    this[_tel] = tels;
+                    this[_email] = emails;
+                }
+
+                getdata() {
+                    console.log(this[_tel], this[_email]);
+                }
+            }
+            return demo;
+        })();
+
+        // console.log(mydemo);
+
+        let myobj = new mydemo('13078901234', 'demo@163.com');
+        // console.log(myobj[_tel]);  // _tel is not defined
+        myobj.getdata();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

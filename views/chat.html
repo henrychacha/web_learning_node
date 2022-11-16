@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        .msg {
+            padding: 20px;
+            background-color: burlywood;
+            position: fixed;
+            left: 20px;
+            bottom: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+
+    </ul>
+    <div class="msg">
+        <input type="text" id="curmsg">&nbsp;
+        <input type="button" onclick="sendmsg()" value="发送">
+    </div>
+
+    <script>
+        var socket = io();
+
+        //接收消息
+        socket.on('rechat', (d) => {
+            let uls = document.getElementsByTagName('ul')[0];
+            uls.innerHTML += `<li>${d}</li>`;
+        });
+
+        function sendmsg() {
+            let content = document.getElementById("curmsg").value;
+            //发送消息
+            socket.emit('chat', content);
+        }
+    </script>
+</body>
+
+</html>

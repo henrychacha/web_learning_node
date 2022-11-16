@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let obj = {};
+        //  obj .3 = 'ok';  //错误的
+
+        let curmap = new Map();
+        curmap.set(3, 'yesok');
+        let curobj = new Object;
+        curmap.set(curobj, 'haha..')
+        console.log(curmap);
+        console.log(curmap.get(curobj));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

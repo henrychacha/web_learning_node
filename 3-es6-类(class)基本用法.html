@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //定义类[人类]:
+        class Peoples {
+            //属性
+            //定义属性时要注意: 属性名前面不用加var、let、const
+            names; //姓名
+            age; //年龄  
+
+            //方法
+            //注意：方法名前面不需要加function
+            study() {
+                console.log(`${this.names} ${this.age}正在学习`);
+            }
+
+            eat() {
+                console.log(`${this.age} ${this.names}正在吃饭`);
+            }
+
+        }
+
+        //实例化类[对象]  
+        let lisi = new Peoples();
+        //  console.log(lisi.names);
+        lisi.names = '李四';
+        lisi.age = 19;
+        //  console.log(lisi);
+        lisi.study();
+
+        let zhangsan = new Peoples();
+        zhangsan.names = '张三';
+        zhangsan.age = 20;
+        zhangsan.eat();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

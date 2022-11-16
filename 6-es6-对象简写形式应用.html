@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    帐号：<input type="text" id="uname" name="uname"><br> 密码：
+    <input type="password" id="pwd" name="pwd"><br> 确认密码：
+    <input type="password" name="repwd"><br> 邮箱：
+    <input type="text" id="email" name="email"><br>
+    <input onclick="sendData()" type="button" value="注册"><br>
+    <script>
+        function sendData() {
+            let uname = $("#uname").val();
+            let pwd = $("#pwd").val();
+            let email = $("#email").val();
+
+            // $.post('???', {
+            //     "uname": uname,
+            //     "pwd": pwd,
+            //     "email": email
+            // }, function(d) {}, 'json');
+
+            $.post('???', {
+                uname,
+                pwd,
+                email
+            }, function(d) {}, 'json');
+        }
+    </script>
+</body>
+
+</html>

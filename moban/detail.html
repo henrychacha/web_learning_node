@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>html文件作为ejs模板文件</p>
+    <div>
+
+        <% for(let i = 0;i<score.length;i++) { %>
+            <p>
+                <%=score[i] %>
+            </p>
+            <% if(score[i] >= 80){ %>
+                <p>优秀</p>
+                <% }else if(score[i] >= 70){ %>
+                    <p>良好</p>
+                    <% }else{ %>
+                        <p>一般</p>
+                        <% } %>
+                            <% } %>
+    </div>
+</body>
+
+</html>

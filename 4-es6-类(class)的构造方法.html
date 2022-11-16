@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Peoples {
+            //属性  
+            // name;
+            // age;
+
+            //静态属性：
+            static types = '人类';
+
+
+            //方法
+
+            //构造器方法：在类实例化时会被自动调用
+            constructor(name, ages) {
+                this.names = name
+                this.age = ages;
+                // console.log(name, ages, 'Hello...');
+            }
+
+            //静态方法
+            static gettype() {
+                console.log(this.age, 666);
+                console.log(this.types, 999);
+            }
+
+            study() {
+                //成员方法中不能访问静态属性及静态方法
+
+                console.log(this.types);
+                console.log(`${this.names}  ${this.age} 正在学习`);
+
+                //  this.eat();
+            }
+
+            eat() {
+                console.log(`${this.age} ${this.names} 正在吃饭`);
+            }
+        }
+
+        //对象(类实例化后为对象)
+        let lisi = new Peoples('李四', 20);
+        lisi.names = 'lisi';
+        lisi.study();
+
+        //注意：静态方法不能通过对象来访问，直接通过类名来访问静态方法
+        //lisi.gettype(); // lisi.gettype is not a function
+        Peoples.gettype();
+
+        //对象
+        let zhangsan = new Peoples('张三', 19);
+        zhangsan.eat();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

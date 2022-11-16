@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function demo() {
+            let prm = new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    //  console.log('settimeout');
+                    resolve('成功');
+
+                }, 1000);
+            });
+
+            return prm;
+        }
+
+        //then()方法返回的是一般值
+        demo().then((d) => {
+            console.log(d, 1);
+            return "hello";
+        }).then((d) => {
+            console.log(d, 2);
+            return 'Web';
+        }).then((d) => {
+            console.log(d, 3);
+        }).catch((err) => {});
+
+
+        function demo2(val) {
+            let prm = new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    //  console.log('settimeout');
+                    resolve(val);
+
+                }, 1000);
+            });
+
+            return prm;
+        }
+
+        //then()方法返回的Promise对象
+        demo2('A').then((d) => {
+            console.log(d, 1);
+            return demo2('B');
+        }).then((d) => {
+            console.log(d, 2);
+            return demo2('C');
+        }).then((d) => {
+            console.log(d, 3);
+        }).catch((err) => {});
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

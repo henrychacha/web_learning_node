@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //封装函数：发送ajax请求
+        function sendAjax({
+            url = '',
+            type = 'post',
+            data = {},
+            dataType = 'json'
+        } = {}) {
+            let p = new Promise((resolve, reject) => {
+
+                //将来要执行的代码 
+                $.ajax({
+                    url,
+                    type,
+                    data,
+                    dataType,
+                    success(d) {
+                        resolve(d);
+                    },
+                    error(err) {
+                        reject(err);
+                    }
+                });
+            });
+
+            return p;
+        }
+
+        //获取所有商品的一级分类
+        sendAjax({
+            "url": "http://106.13.114.114:5000/api/firstCategory",
+            "type": 'get'
+        }).then((data) => {
+            //要发送的参数
+            let obj = {
+                "data": {
+                    "firstId": data.list[0][0].firstId
+                },
+                "url": "http://106.13.114.114:5000/api/secondCategory",
+                "type": "get"
+            };
+            return sendAjax(obj);
+        }).then((d) => {
+            let obj = {
+                "data": {
+                    "secondId": d.list[0].secondId
+                },
+                "url": "http://106.13.114.114:5000/api/thiredCategory",
+                "type": "get"
+            };
+
+            return sendAjax(obj);
+        }).then((d) => {
+            console.log(d, 9999);
+        }).catch((err) => {
+            console.log(err, 222);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

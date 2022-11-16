@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../作业/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script>
+        //需求：将所有商品一级分类名称展示到div标签中
+        //使用技术：promise+async+ajax
+        class ShowData {
+
+            constructor(url, type = 'get', data = {}, dataType = 'json') {
+                this.url = url;
+                this.type = type;
+                this.data = data;
+                this.dataType = dataType;
+            }
+
+            //方法:获取数据
+            sendAjax() {
+                let p = new Promise((resolve, reject) => {
+                    $.ajax({
+                        url: this.url,
+                        type: this.type,
+                        data: this.data,
+                        dataType: this.dataType,
+                        success(d) {
+                            // console.log(d);
+                            resolve([null, d]);
+                        },
+                        error(err) {
+                            // console.log(err);
+                            resolve([err, '']);
+                        }
+                    });
+                });
+                return p;
+            }
+
+
+            //方法：展示数据
+            async render() {
+                let [err, data] = await this.sendAjax();
+                let arr = data.list;
+                console.log(arr);
+                let divs = '';
+                arr.forEach(item => {
+                    //console.log(item);
+                    item.forEach(rt => {
+                        divs += `<li>${rt.firstName}</li>`;
+                    });
+                });
+
+                $("#content").html(`<ul>${divs}</ul>`);
+            }
+
+        }
+
+        let obj = new ShowData('http://106.13.114.114:5000/api/firstCategory');
+        obj.render();
+    </script>
+</body>
+
+</html>

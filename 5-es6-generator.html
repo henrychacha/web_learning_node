@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function demo() {
+
+        }
+
+        //  console.log(demo());
+
+        //generator函数：
+        function* fn() {
+
+        }
+
+        // console.log(fn());
+        // let gene = fn();
+        //  console.log(gene.next());
+
+        function* demo() {
+            console.log('开始执行...');
+            let val = yield 123;
+            console.log(val, '执行到这里');
+            val = yield 'Hello';
+            console.log(val, '执行完成....');
+        }
+
+        //注意：generator函数调用后函数体不会自动执行，需要手动调用next()方法
+        
+        // 使用yield让代码停下来，等待yield后面的代码执行完成
+
+        //当给next()方法传参时会作为重启yield语句（也就是上一个暂停处的yield的返回值
+        let genes = demo();
+        let obj = genes.next();
+        console.log(obj);
+        obj = genes.next(66); // 重启的是26行的yield，成为它的返回值
+        console.log(obj);
+        obj = genes.next('ok');
+        console.log(obj);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

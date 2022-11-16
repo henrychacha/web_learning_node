@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1)对象完全解构赋值  
+        let stuObj = {
+            "usr": "demo",
+            "age": 20,
+            "email": "demo@qq.com"
+        };
+
+        // //es5写法：
+        // let usr = stuObj.usr;
+        // let age = stuObj.age;
+
+
+        //完整形式：
+        // let {
+        //     "usr": x,
+        //     "age": y,
+        //     "email": m
+        // } = stuObj;
+        // console.log(x, y, m);
+
+        // let {
+        //     "usr": usr,
+        //     "age": age,
+        //     "email": email
+        // } = stuObj;
+        //上面的代码可以简写为：
+        //简写形式：
+        // let {
+        //     usr,
+        //     age,
+        //     email
+        // } = stuObj;
+
+        //**注意：不需要考虑变量的先后顺序:
+
+        let {
+            age,
+            email,
+            usr
+        } = stuObj;
+
+        // console.log(usr, age, email, 999);
+
+        // 2)对象不完全解构赋值 
+
+        // let {
+        //     x,
+        //     z
+        // } = {
+        //     "x": 11,
+        //     "y": 2,
+        //     "z": 9
+        // };
+        // console.log(x, z);
+
+        // let {
+        //     x,
+        //     y,
+        //     z
+        // } = {
+        //     "x": 11,
+        //     "y": 33
+        // };
+        // console.log(x, y, z);  
+
+        // 3)默认值  
+        // let {
+        //     m,
+        //     n = 88,
+        //     z = 9
+        // } = {
+        //     "m": 1,
+        //     "n": 33
+        // };
+        // console.log(m, n, z);
+        // 4)对象嵌套解构赋值
+
+        let obj = {
+            'tst': [11, 2, {
+                "x": 21,
+                "y": 33
+            }, 9]
+        };
+
+        let {
+            'tst': [, m, {
+                y
+            }, z]
+        } = obj;
+        console.log(m, y, z);
+
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

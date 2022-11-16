@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //async函数简介：
+        //async函数是基于Promise的generator语法糖，是以同步流程解决异步操作. 
+        //为了解决异步编程中的数据传递问题
+
+        //async函数语法：
+        //         async function 函数名(){
+        //     await 异步操作1; 
+        //     await  异步操作2; 
+        // }
+
+
+        // async function demo() {
+        //     return '成功...'
+        // }
+
+        // async修饰的函数内部的return不会得到预期的结果，会得到一个promise对象
+        // console.log(demo()); //返回的是promise对象
+        // let prm = demo();
+        // prm.then((d) => {
+        //     console.log(d, 111)
+        // }).catch((err) => {
+        //     console.log(err, 333);
+        // });
+
+        //await必须与async结合使用，但async可以单独使用
+        async function fn() {
+            await '123';
+        }
+
+        // fn();
+
+
+        async function test() {
+            console.log('开始...');
+            await 12;
+            console.log('执行到这里');
+            await 'Hi';
+            console.log('完成...');
+        }
+
+        test();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

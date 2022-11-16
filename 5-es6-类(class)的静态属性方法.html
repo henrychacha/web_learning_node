@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class CreateOption {
+            //定义静态属性(新闻类型)
+            static ntype = ['体育', '军事', '社会', '科技'];
+
+            //定义静态方法(创建新闻类型的下拉列表)
+            static selecOpt() {
+                document.write('<select>');
+                let arr = this.ntype;
+                arr.forEach((item, ind) => {
+                    document.write(`<option value="${ind}">${item}</option>`);
+                });
+                document.write('</select>');
+            }
+        }
+
+        CreateOption.selecOpt();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

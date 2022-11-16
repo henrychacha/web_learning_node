@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        'use strict'; //开启严格模式
+        //开启严格模式：
+        //1、变量要先定义后使用
+        //2、改变this指向 
+        //3、使用eval()函数产生作用域
+
+
+        //说明eval()函数：执行字符串格式的语句
+        // var str = "1+8";
+        // console.log(str);
+        // console.log(eval(str));
+
+
+
+        //变量要先定义后使用
+        var age;
+         age = 20;
+        // var  age = 20;
+        // console.log(age);
+
+        //改变this指向 
+        function demo(ages, usrs) {
+            console.log(this);
+            this.age = ages;
+            this.usr = usrs;
+            console.log(this.age, this.usr);
+        }
+
+         demo(18, 'lisi'); //相当于window.demo(18,'lisi')
+        // new demo(18, 'lisi');
+
+        //使用eval()函数产生作用域
+        var email = 'lisi@qq.com';
+        var str2 = "var email='zhangsan@163.com';alert(email);";
+        eval(str2);
+        alert(email);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../作业/jquery.min.js"></script>
+    <script>
+        //     sendAjaxs({
+        //         url: 'http://106.13.114.114:5000/api/firstCategory'
+        //     });
+        //发送请求：Promise+ajax
+        function sendAjaxs({
+            url,
+            type = 'get',
+            data = {},
+            dataType = 'json'
+        } = {}) {
+            let p = new Promise((resolve, reject) => {
+
+                $.ajax({
+                    url,
+                    type,
+                    data,
+                    dataType,
+                    success(d) {
+                        // console.log(d, 111);
+                        resolve([null, d]);
+                    },
+                    error(e) {
+                        resolve([e, '']);
+                    }
+                });
+
+            });
+            return p;
+        }
+
+        //获取所有商品分类数据
+        async function getCateData() {
+            //获取所有商品一级分类数据
+            // let data = await sendAjaxs({
+            //     url: 'http://106.13.114.114:5000/api/firstCategory'
+            // });
+[]
+            let [err, datas] = await sendAjaxs({
+                url: 'http://106.13.114.114:5000/api/firstCategory'
+            });
+            // console.log(datas);
+            //根据某个一级分类id获取所有商品二级分类数据
+            [err, datas] = await sendAjaxs({
+                url: 'http://106.13.114.114:5000/api/secondCategory',
+                data: {
+                    firstId: datas['list'][0][0].firstId
+                }
+            });
+            // console.log(err, datas);
+
+            // 根据某个二级分类id获取所有商品三级分类数据
+            [err, datas] = await sendAjaxs({
+                url: 'http://106.13.114.114:5000/api/thiredCategory',
+                data: {
+                    secondId: datas['list'][0].secondId
+                }
+            });
+            console.log(err, datas);
+        }
+
+        getCateData();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

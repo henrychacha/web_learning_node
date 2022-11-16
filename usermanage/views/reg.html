@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        function checkuser() {
+            let user = $("#usr").val();
+            $.get('/chkuser', {
+                user
+            }, function(d) {
+                console.log(d);
+                $('#umsg').html(d.msg);
+                if (d.flag) {
+                    $("#umsg").css('color', 'red');
+                } else {
+                    $("#umsg").css('color', 'green');
+                }
+            }, 'json');
+        }
+    </script>
+</head>
+
+<body>
+    <form action="/regact" method="post">
+        用户:<input id="usr" onblur="checkuser();" type="text" name="usr"><span id="umsg"></span><br> 密码:
+        <input type="text" name="pwd"><br> 密码:
+        <input type="text" name="repwd"><br>
+        <input type="submit" value="注册 "><br>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小U商城登录页</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/font/iconfont.css">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/login.js"></script>
+</head>
+
+<body>
+    <div class="lg_header">
+        <div class="layout">
+            <a href="./index.html" class="logo">
+                <img src="./images/logo.jpg" alt="">
+            </a>
+            <div class="logo_text">
+                欢迎登录
+            </div>
+        </div>
+    </div>
+    <div class="login_main">
+        <div class="layout">
+            <div class="login_box">
+
+                <div class="title">
+                    登录
+                </div>
+                <div class="ipt_item ipt_active">
+                    <span class="ipt_icon">
+                            <span class="iconfont">&#xe857;</span>
+                    </span>
+                    <input id="usr" type="text" class="ipt" placeholder="手机号/会员名/邮箱">
+                </div>
+                <div class="ipt_item">
+                    <span class="ipt_icon">
+                            <span class="iconfont">&#xe636;</span>
+                    </span>
+                    <input id='pwd' type="text" class="ipt" placeholder="密码">
+                </div>
+                <div class="code">
+                    <input type="text" class="input_code" placeholder="验证码">
+                    <div class="code_icon">
+                        75360
+                    </div>
+                </div>
+                <a href="javascript:;" onclick="checklogin()">
+                    <div class="btn">
+                        登录
+                    </div>
+                </a>
+                <div class="function">
+                    <div class="left">
+                        <span class="iconfont icon_checkbox" id="checked">&#xe740;</span>
+                        <span class="iconfont icon_checkbox" id="no_checked">&#xec58;</span> 自动登录
+                    </div>
+                    <div class="right">
+                        忘记密码？
+                    </div>
+                </div>
+                <div class="login_ft">
+
+                    <ul class="ft_l">
+                        <li>
+                            <i class="point"></i>
+                            <span class="text">QQ</span>
+                        </li>
+                        <li>
+                            <i class="point"></i>
+                            <span class="text">微博</span>
+                        </li>
+                        <li>
+                            <i class="point"></i>
+                            <span class="text">微信</span>
+                        </li>
+                    </ul>
+                    <a href="./register.html" class="ft_r">
+                                立即注册
+                            </a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div>
+            Copyright&copy;2010-2020 小U商城 版权所有 保留一切权利
+        </div>
+        <div>
+            京ICP备10218183 京ICP证161188号 京公网安备 11010802020593号 出版经营许可证新出发京批字第直130052号
+        </div>
+    </div>
+    <script src='./js/jquery-1.12.4.js'></script>
+    <script src="http://www.gongjuji.net/Content/files/jquery.md5.js"></script>
+    <script src="./js/common.js"></script>
+
+    <script>
+        async function checklogin() {
+
+            //用户输入的帐号  
+            let uname = $('#usr').val();
+            let upwd = $.md5($('#pwd').val());
+            let d = await sendAjax({
+                "url": "/users/loginact",
+                "data": {
+                    uname,
+                    upwd,
+                },
+                "type": "post"
+            });
+
+            alert(d.msg);
+            if (d.code == 200) { //登录成功
+                localStorage['token'] = d.data.tokens; //获取服务器生成Token
+                localStorage['uname'] = d.data.uname; //登录成功的帐号
+                location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

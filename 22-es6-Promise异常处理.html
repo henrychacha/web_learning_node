@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //如果把失败时的回调函数定义在then()方法中的第二个参数中，那么可以捕获到Promise里面的代码异常，但不能捕获到then()中第一个参数中的成功时回调函数里面的代码异常；如果把失败时的回调函数定义在catch()方法中，不仅可以捕获到Promise里面的代码异常，还可以捕获到then()中第一个参数中的成功时回调函数里面的代码异步。
+
+
+        let prm = new Promise((resolve, reject) => {
+            // console.log(x);
+            // let x = 3;
+            // resolve('成功');
+
+
+            try {
+                //  console.log(x);
+                let x = 3;
+                resolve(x);
+            } catch (error) {
+                reject('失败' + error);
+            }
+
+
+        });
+
+        // prm.then(function(d) {
+        //     console.log(d);
+        //     console.log(y);
+        //     let y = 8;
+        // }, function(err) {
+        //     console.log(err, 777);
+        // });
+
+        prm.then(function(d) {
+            console.log(d);
+            console.log(y);
+            let y = 10;
+        }).catch(function(err) {
+            console.log(err, 666);
+        });
+
+        //promise的then()调用完成后返回的是Promise对象
+        // console.log(prm.then(), 999);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

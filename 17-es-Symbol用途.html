@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let obj = {
+            'brand': '苹果',
+            'price': 8000
+        };
+
+        obj.brand = '梨';
+
+        console.log(obj.brand);
+
+        let obj2 = {};
+        let brand = Symbol('品牌');
+        obj2[brand] = '苹果手机';
+        obj2.brand = '梨';
+        console.log(obj2, obj2[brand]);
+
+        //Symbol不能使用for...in或for...of来遍历
+        for (var i in obj2) {
+            console.log(i);
+        }
+
+        //Symbol不能参与运算
+        let s = brand + 'ok';
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

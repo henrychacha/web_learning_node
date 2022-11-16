@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <div id='content'>
+
+    </div>
+
+    <script>
+        //需求：调用所有商品一级分类并展示到界面
+
+
+        //定义函数：获取所有商品一级分类数据
+        function getCateData(url, data = {}, datatype = 'json') {
+            $.get(url, data, function(d) {
+                iter.next(d);
+
+            }, datatype);
+        }
+
+        //定义generator函数：
+        function* showcate() {
+            let data = yield getCateData('http://106.13.114.114:5000/api/firstCategory');
+            //  console.log(data, 111);
+            renderData(data.list)
+        }
+
+        let iter = showcate();
+        iter.next();
+
+        //定义函数：展示所有商品一级分类数据到界面上
+        function renderData(arr) {
+            console.log(arr, 777);
+
+            let str = '';
+            for (let i = 0; i < arr.length; i++) {
+                // console.log(arr[i]);
+                for (let s = 0; s < arr[i].length; s++) {
+                    //  console.log(arr[i][s], 88);
+                    str += `<li>${arr[i][s].firstName}</li>`
+                }
+            }
+
+            // console.log(str);
+            $("#content").html(`<ul>${str}</ul>`);
+        }
+    </script>
+</body>
+
+</html>

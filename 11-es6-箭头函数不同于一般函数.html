@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //箭头函数不同于一般函数：
+        //1)一般函数可以先调用后定义，而箭头函数只能先定义使用调用
+        //2)一般函数有arguments，而箭头函数没有arguments，但可以使用rest参数
+        //3)一般当作构造函数，而箭头函数不能当作构造函数,因为箭头函数没有自己的this
+
+        //一般函数可以先调用后定义
+
+        //  fn(); //调用函数
+
+        function fn() {
+            console.log('testing..', arguments);
+        }
+
+        //实例化
+        // new fn();
+
+
+        //箭头函数不能先调用 
+        //  demo(); // demo is not a function
+
+        var demo = (...x) => {
+            console.log(x);
+            //arguments is not defined
+            //箭头函数没有arguments
+            //console.log('demo...', arguments);
+        }
+
+        // demo(1, 3, 4);
+        //实例化
+        //箭头函数不能当作构造函数
+        //  new demo(1, 3, 4); //demo is not a constructor
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

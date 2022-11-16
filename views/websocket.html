@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let sockets = io();
+
+        //sockets.emit('事件名','消息内容');
+        //sockets.on('事件名',回调函数);
+
+        //发送消息
+        sockets.emit('tv1', 'Hello  Server');
+
+        //接收消息
+        sockets.on('cctv13', (m) => {
+            console.log(m);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

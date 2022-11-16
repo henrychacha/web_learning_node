@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //let 在地同一作用域中只能声明一次，但var可以声明多次
+
+        var age = 19;
+        var age = 20;
+        // console.log(age);
+
+        let usr = 'lisi';
+        //  let usr = 'zhangsan';
+        usr = 'zhangsan';
+        console.log(usr);
+
+        if (1) {
+            let email = 'lisi@qq.com';
+            //var email = 'zhangsan@qq.com';  //'email' has already been declared
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

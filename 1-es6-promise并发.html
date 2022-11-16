@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //并发：
+
+        //热映电影
+        function hotMovie() {
+            $.get('热映电影地址', {}, function(d) {}, 'json');
+        }
+
+        //hotMovie();
+
+        //推荐电影
+        function recMovie() {
+            $.get('推荐电影地址', {}, function(d) {}, 'json');
+        }
+
+        //recMovie()
+
+
+
+        //Promise.all([promise对象1,promise对象2...])
+
+        function demo1() {
+            let p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('1秒');
+                    // reject('失败1');
+                }, 1000);
+            });
+            return p
+        }
+
+
+        function demo2() {
+            let p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('3秒');
+                    //  reject('失败3');
+                }, 3000);
+            });
+            return p
+        }
+
+
+        //Promise.all()并发方法的特点：
+        //1、要么所有Promise实例都成功、要么都失败，
+        //2、如果都成功则返回所有Promise实例结果，并且该结果是数组，数组中的元素与all()方法中Promise实例一一对应;
+        //3、如果有一个Promise实例执行失败则都失败，并且只返回最先失败的那个Promise实例结果。
+        let pm = Promise.all([demo2(), demo1()]);
+        // let pm = Promise.all([demo1(), demo2()]);
+        //  console.log(arr);  //Promise对象
+        pm.then((d) => {
+            console.log(d);
+        }).catch((err) => {
+            console.log(err);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

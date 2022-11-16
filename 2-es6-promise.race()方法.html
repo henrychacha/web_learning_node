@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Promise.race([promise对象1,promise对象2...])
+
+        function demo1() {
+            let p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('1秒');
+
+                }, 1000);
+            });
+            return p
+        }
+
+        function demo2() {
+            let p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve('2秒');
+
+                }, 2000);
+            });
+            return p
+        }
+
+        let prm = Promise.race([demo1(), demo2()]);
+        prm.then((d) => {
+            console.log(d);
+        }).catch((err) => {
+            console.log(err);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

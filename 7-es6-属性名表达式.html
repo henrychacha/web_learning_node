@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //什么表达式？
+        //如：2*n 
+        //var m = 2*9;
+
+        let obj2 = {
+            "m": 1,
+            "n": 33
+        };
+
+        for (var i in obj2) {
+            console.log(obj2[i], 777)
+        }
+
+        let str = 2;
+        let y = "usr3";
+        let obj = {
+            "usr": "demo",
+            ["usr" + str]: "tom",
+            [y]: "lisi"
+        };
+
+        console.log(obj, obj[y]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

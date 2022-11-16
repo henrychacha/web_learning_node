@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table width="80%" border="1" cellspacing="0">
+        <tr>
+            <td>序号</td>
+            <td>帐号</td>
+            <td>密码</td>
+        </tr>
+        <% for(let i = 0;i<uArr.length;i++){ %>
+            <tr>
+                <td>
+                    <%=i+1 %>
+                </td>
+                <td>
+                    <%=uArr[i].usr %>
+                </td>
+                <td>
+                    <%=uArr[i].pwd %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+</html>

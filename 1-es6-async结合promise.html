@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //await特点：
+        //1)await要与async一起使用
+        //2)await通常等待的是Promise结果，当Promise结果为resolve()时await可以正常处理，但当Promise结果为reject()时await不能正常处理，我们使用这种方法来处理Promise的异常：resolve(['是否正常',结果])
+        //3)await后面也可以跟同步操作，但很少这样使用
+
+        function demo() {
+            let p = new Promise((resolve, reject) => {
+
+                setTimeout(() => {
+                    console.log('ok');
+                    //  resolve();
+
+                    //     if (true) { //正确
+                    if (false) { //正确
+                        //  resolve(33);
+                        resolve([null, 33]);
+                    } else { //错误
+                        // reject('error message...');
+                        resolve(['error message', '']);
+                    }
+                }, 2000);
+
+            });
+
+            return p;
+        }
+
+        async function fn() {
+            console.log(1);
+            //await能处理promise中resolve()，但不能处理reject()
+
+            //异常处理方法一:
+            // let d = await demo().catch((err) => {
+            //     console.log(err, 9999);
+            // });
+            // let d2 = await demo().catch((err) => {
+            //     console.log(err);
+            // })
+
+            //异常处理方法二：
+            let d = await demo();
+            if (d[0] === null) { //正常
+                console.log('正确结果为：' + d[1]);
+            } else { //异常
+                console.log('失败原因：' + d[0]);
+            }
+            console.log(d, 2);
+        }
+
+        fn();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

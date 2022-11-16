@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //let作用：声明变量
+
+        //let 声明的变量是块级作用域 、而var声明的变量是函数作用域，但在if、for中声明的变量是全局的
+
+        function fn() {
+            var x = 21;
+        }
+
+        fn();
+
+        //    console.log(x); // : x is not defined
+
+        if (1) {
+            var y = 22;
+        }
+        //  console.log(y);
+
+        for (var i = 0; i < 10; i++) {
+
+        }
+        //  console.log(i);
+
+
+        //let声明的变量是块级作用域
+        let tst = 'hello';
+        if (1) {
+            console.log(tst);
+            let tst2 = 'word';
+        }
+
+        //  console.log(tst2);
+
+        for (let s = 0; s < 10; s++) {
+
+        }
+
+        // console.log(s); //s is not defined
+
+        // for (var oop = 0; oop < 10; oop++) {
+        //     console.log(oop, 666);
+        //     var oop = 11;
+        // }
+
+        for (let oop = 0; oop < 10; oop++) {
+
+            // let oop = 11;
+            let oop = 11;  // 这里的oop为11 是不会影响到上面括号中的oop的值的，这就和var不一样。不过，如果这里没有let opp = 11，则56行的opp输出的是52行中的opp值
+            console.log(oop, 777);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

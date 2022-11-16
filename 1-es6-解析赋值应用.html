@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //数组解构赋值应用：交换数据
+        let x = 11;
+        let y = 2;
+
+        // [y, x] = [x, y];
+        // console.log(x, y);
+
+
+        //对象解构赋值应用：  
+        // $.get()  
+        // $.post()
+        // $.ajax()
+
+        // $.get("地址"[,{要发送的参数}],function(d){}[,'期望服务端返回的数据类型']);
+
+        //比如返回的结果(从xxx.php文件中来)为： d={"uid":11,"usr":"demo","age":20}
+        // $.get('xxxx.php', {}, function(d) {
+        $.get('xxxx.php', {}, function({
+            uid,
+            usr,
+            age
+        }) {
+            // 在回掉函数中使用d中的值，要取出这些值。下面的方法麻烦，可以用对象的解构赋值
+            // let uid = d.uid;
+            // let usr = d.usr;
+            // let age = d.age;
+
+            // let {uid,usr,age} = d;  // 把d放到参数上，表示从返回的json中拿出uid，usr，age的值然后赋值给新构造的变量uid，usr，age中
+
+
+            console.log(uid, usr, age);
+        }, 'json')
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

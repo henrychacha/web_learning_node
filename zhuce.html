@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小U商城</title>
+    <link rel="icon" href="img/logo.ico">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/zhuce.css">
+    <link rel="stylesheet" href="ico/iconfont.css">
+</head>
+
+<body>
+    <!-- top -->
+    <div class="top layout clearfix">
+        <img src="img/登录页_01.jpg" alt="#">
+        <h1>欢迎注册</h1>
+    </div>
+    <!-- body -->
+    <div class="bodybei">
+        <div class="zhucebiao1 layout">
+            <div class="zhucebiao">
+                <h1>注册账号</h1>
+                <form action="">
+                    <ul class="shang">
+                        <li class="mm clearfix">
+                            <input type="text" class="mima1" placeholder="请输入邮箱" id="usr">
+                            <div class="mima"><i class="iconfont icon-xinfeng"></i></div>
+                            <p>请输入邮箱/邮箱已注册/邮箱格式错误</p>
+                        </li>
+                        <li class="mm clearfix">
+                            <input type="password" class="mima1" placeholder="密码" id="pwd">
+                            <div class="mima"><i class="iconfont icon-mima"></i> </div>
+                            <p>请输入密码/密码格式为6-20位字母数组组合</p>
+                        </li>
+                        <li class="yanzhengma clearfix">
+                            <input id="usrcode" type="text" class="yanzheng" placeholder="验证码">
+
+                            <div onclick="regcodes();" id="codes"></div>
+                            <!--<img src="" alt="" id="codes">-->
+                            <p>请输入验证码</p>
+                        </li>
+                        <li class="zhul">
+                            <input onclick="reguser();" type="button" value="注册" class="zhucejian">
+                        </li>
+                        <li>
+                            <span>已有账号</span>
+                            <a href="">去登录</a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="footerbei2">
+        <div class="footer2 layout">
+            <p class="footer3">Copyright&copy; 2010-2016 小U商城 版权所有 保留一切权利</p>
+            <p>Copyright&copy; 2010-2016 小U商城 版权所有 保留一切权利 小U商城 版权所有 保留一切权利</p>
+        </div>
+    </div>
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="http://www.gongjuji.net/Content/files/jquery.md5.js"></script>
+    <script>
+        let curcode = '';
+        //创建验证码：  
+        function regcodes() {
+            $.get('http://localhost:3000/users/createcode', function(d) {
+                console.log();
+                $("#codes").html(d.data.img);
+                curcode = d.data.txt;
+                //  console.log(curcode, 666);
+            }, 'json');
+        }
+
+        regcodes();
+
+        //注册用户
+        function reguser() {
+
+            //用户输入的帐号
+            let uname = $("#usr").val();
+            //用户输入的密码
+            let upwd = $("#pwd").val();
+            //md5加密
+            upwd = $.md5(upwd);
+            //用户输入的验证码
+            let ucode = $('#usrcode').val();
+
+
+            $.post('http://localhost:3000/users/register', {
+                uname,
+                upwd,
+                ucode,
+                curcode
+            }, function(d) {
+
+                alert(d.msg);
+                console.log(d);
+                if (d.code == 200) { //成功
+                    location.href = "denglu.html";
+                }
+
+            }, 'json');
+        }
+    </script>
+</body>
+
+</html>

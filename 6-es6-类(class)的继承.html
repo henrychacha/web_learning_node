@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //定义类[人类]
+        class Peoples {
+            static types = '人类';
+
+            constructor(name, ages) {
+                this.names = name;
+                this.age = ages;
+                console.log('哈哈...');
+            }
+
+            study() {
+                console.log(`${this.names} ${this.age}正在学习`);
+            }
+
+            eat() {
+                console.log(`${this.names} ${this.age}正在吃饭`);
+            }
+        }
+
+
+        //定义类[学生类]:类的继承  父类的属性方法都会继承，静态方法也会继承，只是没有办法访问
+        class Student extends Peoples {
+
+            //注意：
+            //1)、当子类中没有定义构造方法时默认访问父类的构造方法
+            //2)、当子类中定义了构造方法时要调用super()方法，通过super()方法可以把父类中的this继承下来的同时也可以给父类中的属性设置属性值
+
+            constructor(xuehao, name, age) {
+                //  console.log(xuehao, name, age, 88888);
+                super(name, age); // super()放在constructor中,可以理解为在向父类中的构造器传递形参
+                this.xuehao = xuehao;
+            }
+
+            //为什么要使用方法重构/重写？
+            //当父类中的方法在子类中不能满足需求时要对父类中的方法进行重构/重写.
+
+            //怎样进行方法重构/重写？
+            //在子类定义和父类同名的方法即可。
+            study() {
+                console.log(`${this.age}岁的${this.names}正在认真地学习！！！`);
+            }
+
+            static homework() {
+                console.log(this.types, 8889);
+            }
+
+            //访问父类中的方法
+            play() {
+                this.eat();
+            }
+
+        }
+
+
+        //定义类[工人]:  
+        class Worker extends Peoples {
+
+        }
+
+        //访问静态方法：
+        Student.homework();
+
+        let xiaoming = new Student('xm321', '小明', 18);
+        xiaoming.study();
+        console.log(xiaoming.age, 999);
+        xiaoming.play();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

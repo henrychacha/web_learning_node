@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //声明常量：const  常量名
+        //    注意：常量名习惯性大写
+        //为什么要使用常量 ：
+        //只要在整个程序运行期间其值是固定不变的都可以声明成常量，因为常量一旦声明其值不能被修改
+
+        //常量的特点：
+        //1、常量是没有声明提升、块级作用域、同一作用域只能同一个常量 
+        //2、常量一旦声明其值是不能被修改的，但如果常量的值是对象或数组则可以修改
+
+        const PI = 3.1415;
+        // PI = 3.14; //常量一旦声明其值是不能被修改的
+        // const PI = 3.14;  // 'PI' has already been declared
+        console.log(PI);
+
+        //常量是没有声明提升
+        // console.log(PORTS); // PORTS is not defined
+        // const PORTS = 3306; //mysql端口
+
+        //块级作用域 
+        // if (1) {
+        //     const HOSTS = "www.baidu.com";
+        // }
+
+        // console.log(HOSTS); // HOSTS is not defined
+
+        // 如果常量的值是对象或数组则可以修改
+        const OBJ = {
+            "x": 1,
+            "y": 21
+        };
+
+        OBJ.x = 33;
+        console.log(OBJ);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

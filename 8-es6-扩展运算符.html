@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //扩展运算符语法：  ...  
+
+        //扩展运算符功能：数据展开功能(类似于apply())、收集数据(类似于arguments)
+
+        //数据展开：
+        let arr = [1, 3, 5];
+        // let arr2 = [7, 9, ...arr];
+        let arr2 = [...arr, 7, 9];
+        //  console.log(arr2);
+
+        let arr3 = [...arr];
+        //  console.log(arr3, arr);
+
+
+        //注意：最好在谷歌浏览器中运行下面的代码
+        let obj = {
+            "x": 1,
+            "y": 21
+        };
+
+        let obj2 = {
+            fn() {
+                console.log('fn...');
+            }
+        };
+
+        let obj3 = {
+            "data": {...obj
+            },
+            "method": {...obj2
+            }
+        }
+
+        console.log(obj3);
+
+
+
+        //收集数据：
+        //  function fn(x, y, m, n) {
+        function fn(...arg) { //收集数据
+            console.log(arg);
+
+            let xy = [...arg];
+
+
+            //es5
+            //    demo(arg[0], arg[1], arg[2], arg[3]);
+            demo(...arg); //展开数据
+
+        }
+
+        function demo(m, n, i, p) {
+            console.log(m, n, i, p);
+        }
+
+        fn(1, 2, 5, 8)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

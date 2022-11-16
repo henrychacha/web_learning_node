@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let obj = {
+            age: 20,
+            demo: function() {
+                console.log(this);
+            }
+        }
+
+        //obj.demo();  // Ojbect   
+
+        //  obj.demo.call(window);
+
+        function demo() {
+            console.log(this);
+            setTimeout(() => {
+                console.log(this);
+            }, 1000);
+        }
+
+
+
+        // demo();  //window   window
+        //    demo.call(new Object()); // {} {}
+
+        var demo = () => {
+            console.log(this);
+            setTimeout(() => {
+                console.log(this);
+            }, 2000);
+        }
+
+        demo.call(new Object());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

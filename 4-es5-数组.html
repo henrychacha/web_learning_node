@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //分数
+        var arr = [67, 89, 71, 90, 83];
+
+        //需求：查询分数大于等于80分的
+        var arr2 = arr.filter(function(item, ind) {
+            // console.log(x, y);
+            return item >= 80;
+        });
+        //  console.log(arr2);
+
+        //需求：给分数小于80分的加5分  
+        var arr3 = arr.map(function(item, ind) {
+            if (item < 80) {
+                return item + 5;
+            } else {
+                return item;
+            }
+        });
+        console.log(arr3);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

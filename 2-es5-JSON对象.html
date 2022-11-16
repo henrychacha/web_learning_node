@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //什么是josn?【了解】
+        //json(JavaScript Object Notation:javascript对象节点),它是一种轻量级的数据交换格式。
+
+        //josn用途？
+        //josn主要用来在不同编程语言之间交换数据。
+
+        //json的两种数据类型[重点]：json对象、json对象数组
+
+        //json对象格式：{"属性名1":属性值1,"属性名2":属性值2...}
+        var lisiObj = {
+            "uname": "lisi",
+            "age": 20,
+            "email": "lisi@163.com"
+        };
+
+        // console.log(lisiObj.age);
+
+        // for (var x in lisiObj) {
+        //     console.log(lisiObj[x]);
+        // }
+
+        //josn对象数组格式：[{"属性名1":属性值1,"属性名2":属性值2...},{"属性名1":属性值1,"属性名2":属性值2...}...]
+
+
+        var stuObj = [{
+            "uname": "lisi",
+            "age": 20,
+            "email": "lisi@163.com"
+        }, {
+            "uname": "zhangsan",
+            "age": 19,
+            "email": "zhangsan@qq.com"
+        }];
+
+        // console.log(stuObj[1].uname);
+        // for (var s = 0; s < stuObj.length; s++) {
+        //     console.log(stuObj[s].uname, stuObj[s].age);
+        // }
+
+        var obj = {
+            "x": 1,
+            y: 2
+        };
+
+        //JSON.parse():将字符串格式的json转换成真正的json对象
+        var str = '{"bookname":"web开发","price":88}';
+        var bkObj = JSON.parse(str);
+        console.log(typeof bkObj, bkObj);
+
+        //用途：$.get('url',{参数},function(d){},'json');
+
+        //JSON.stringify():将json对象转换成字符串格式的json
+        var bkStr = JSON.stringify(bkObj);
+        console.log(bkStr, typeof bkStr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

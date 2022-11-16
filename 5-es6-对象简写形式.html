@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //对象简写形式有两种：属性名简写、方法名简写   
+
+        let age = 21;
+        let usr = "demo";
+        // let obj = {
+        //     "age": age,
+        //     "usr": usr
+        // };
+
+        //属性名简写：当属性名与属性值同名时可以简写
+        let obj = {
+            age,
+            usr
+        };
+        console.log(obj);
+
+        //方法简写：
+        let obj2 = {
+            usr,
+            age,
+            // fn: function() {
+            //     console.log('fn...')
+            // }
+            fn() {
+                console.log('fn2...');
+            }
+        };
+        console.log(obj2);
+
+        obj2.fn();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

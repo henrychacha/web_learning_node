@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div</div>
+    <script>
+        let divs = document.getElementsByTagName('div');
+        console.log(divs);
+
+        //转换成真正的数组
+        let arr = Array.from(divs);
+        console.log(arr);
+
+        //注意：将可遍历的对象转换成数组时要在对象中添加"length"属性
+        let obj = {
+            "0": 1,
+            "1": 2,
+            "2": 3,
+            "length": 3
+        };
+        console.log(obj);
+
+        let arr2 = Array.from(obj);
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

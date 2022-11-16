@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //箭头函数this指向 ：箭头函数中的this指向依赖外层函数中的this指向,箭头函数中的this不绑定当前调用者
+
+        function fn() {
+            console.log(this, 111);
+            setTimeout(function() {
+                console.log(this);
+            }, 1000);
+
+            setTimeout(() => {
+                console.log(this);
+            }, 2000);
+        }
+
+        //   fn(); // window   window
+
+        //   new fn(); // window  fn{}
+
+
+        var brand = "苹果";
+        var obj = {
+            brand: "华为",
+            fn: function() {
+
+                setTimeout(function() {
+                    console.log(this, this.brand);
+                }, 1000);
+
+                setTimeout(() => {
+                    console.log(this, this.brand);
+                }, 2000);
+            }
+        }
+
+        // obj.fn(); //苹果   华为
+
+
+        var price = 5000;
+        var obj2 = {
+            price: 8000,
+            fn: () => {
+                setTimeout(function() {
+                    console.log(this, this.price);
+                }, 1000);
+
+                setTimeout(() => {
+                    console.log(this, this.price);
+                });
+            }
+        }
+        obj2.fn();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

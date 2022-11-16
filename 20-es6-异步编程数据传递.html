@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //同步编程中的数据传递：
+
+        function demo(x, y) {
+            return x * y;
+        }
+
+        // demo(2, 6);
+
+        //异步编程中的数据传递:使用回调函数来解决
+        function fn(v, calls) {
+            //console.log(v, calls);
+            setTimeout(function() {
+
+                calls(v * 8); // 用一个函数代替 ，函数写在外面，把参数传给了函数， 因为无法用return把里面的数据扔出去，所以就把函数扔进来，把函数当做参数传进来。
+            }, 1000);
+        }
+
+        var callback = function(d) {
+            console.log(d, 8888)
+            
+        };
+
+        fn(8, callback);
+        
+        </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

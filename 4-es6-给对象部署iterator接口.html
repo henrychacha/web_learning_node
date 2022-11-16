@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let obj = {
+            "usr": "lisi",
+            "age": 20
+        };
+
+        //obj[Symbol.iterator] is not a function
+        // for (let y of obj) {
+        //     console.log(y);
+        // }
+
+        //给对象部署iterator接口：
+        //注意：等号左边是固定写法
+        obj[Symbol.iterator] = function() {
+            //获取对象中所有属性名
+            let keyArr = Object.keys(obj);
+            //  console.log(keyArr);
+            //下标
+            let ind = 0;
+            return {
+                next: function() {
+                    if (ind < keyArr.length) {
+                        //获取当前属性名
+                        let k = keyArr[ind++];
+                        //console.log(k, 666);
+                        return {
+                            value: obj[k],
+                            done: false
+                        };
+                    } else { //遍历完成了
+                        return {
+                            value: undefined,
+                            done: true
+                        };
+                    }
+
+                }
+            };
+        }
+
+        // let obj_iterator = obj[Symbol.iterator]();
+        // console.log(obj_iterator.next());
+        // console.log(obj_iterator.next());
+        // console.log(obj_iterator.next());
+
+        for (let x of obj) {
+            console.log(x);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
